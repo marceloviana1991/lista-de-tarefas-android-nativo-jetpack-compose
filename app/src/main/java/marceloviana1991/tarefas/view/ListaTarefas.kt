@@ -11,13 +11,15 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import marceloviana1991.tarefas.component.Fab
 import marceloviana1991.tarefas.component.TopBar
-import marceloviana1991.tarefas.model.Tarefa
 import marceloviana1991.tarefas.view.item.ItemListaTarefa
+import marceloviana1991.tarefas.viewmodel.TarefaViewModel
 
 
 @Composable
 fun ListaTarefas(
-    navController: NavController
+    navController: NavController,
+    viewModel: TarefaViewModel
+
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -25,18 +27,17 @@ fun ListaTarefas(
         floatingActionButton = { Fab(onClick = { navController.navigate("salvarTarefa") }) }
 
     ) { innerPadding ->
-        val listaDeTarefas: MutableList<Tarefa> = mutableListOf(
-            Tarefa("Tarefa", "É uma tarefa", 1),
-            Tarefa("Tarefa", "É uma tarefa", 2),
-            Tarefa("Tarefa", "É uma tarefa", 3)
-        )
+        val listaDeTarefas = viewModel.listaTarefas
         LazyColumn(
             modifier = Modifier
             .padding(innerPadding)
         ) {
-            itemsIndexed(listaDeTarefas) { position, _ ->
+            itemsIndexed(listaDeTarefas) { _, tarefa ->
 
-                ItemListaTarefa(position, listaDeTarefas)
+                ItemListaTarefa(tarefa) {
+                        tarefaExcluir ->
+                    viewModel.removerTarefa(tarefaExcluir)
+                }
             }
 
         }
