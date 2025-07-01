@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import marceloviana1991.tarefas.ui.theme.CorNeutra
 import marceloviana1991.tarefas.ui.theme.CorNeutraClara
@@ -39,6 +40,7 @@ fun TextField(
         ),
         shape = ShapeEditText.small,
         keyboardOptions = KeyboardOptions(
+            capitalization = KeyboardCapitalization.Sentences,
             keyboardType = keyboardType
         )
     )
