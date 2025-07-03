@@ -1,15 +1,17 @@
 package marceloviana1991.tarefas.component
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import marceloviana1991.tarefas.ui.theme.CorNeutra
 import marceloviana1991.tarefas.ui.theme.CorNeutraClara
 import marceloviana1991.tarefas.ui.theme.CorSecundaria
@@ -43,6 +45,30 @@ fun TextField(
             capitalization = KeyboardCapitalization.Sentences,
             keyboardType = keyboardType
         )
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewTextField() {
+    TextField(
+        value = "",
+        onValueChange = {},
+        modifier = Modifier.padding(10.dp),
+        label = "Campo de texto",
+        keyboardType = KeyboardType.Text
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewTextFieldFilled() {
+    TextField(
+        value = "Texto digitado",
+        onValueChange = {},
+        modifier = Modifier.padding(10.dp),
+        label = "Campo de texto",
+        keyboardType = KeyboardType.Text
     )
 }
 

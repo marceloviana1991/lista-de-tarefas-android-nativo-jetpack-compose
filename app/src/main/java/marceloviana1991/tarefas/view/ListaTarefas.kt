@@ -50,6 +50,8 @@ fun ListaTarefas(
         }
 
         AlertDlg(
+            title = "Excluir tarefa",
+            text = "Tem certeza que deseja excluir essa tarefa?",
             showDialog = showDialog,
             onDismiss = {
                 tarefaExcluirGlobal = Tarefa()
